@@ -1,0 +1,121 @@
+﻿.page-wrapper {
+    display: flex; /* Habilita Flexbox para colocar sidebar y contenido */
+    min-height: 100vh; /* Asegura que la página ocupe toda la altura */
+}
+
+/* Estilo general del menú lateral */
+.sidebar {
+    width: 250px; /* Ancho fijo como en la imagen */
+    flex-shrink: 0; /* Evita que el sidebar se encoja */
+    background-color: #243744; /* Color de fondo oscuro de la imagen */
+    color: #ffffff;
+    padding: 20px 0;
+    position: fixed; /* Lo fija a la izquierda */
+    height: 100vh;
+    overflow-y: auto; /* Permite scroll si el menú es muy largo */
+}
+
+/* Estilo para la cabecera (Logo/Perfil) */
+.sidebar-header {
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    background-color: #007bff; /* Color del círculo CPP */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.profile-role {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Estilo para los elementos del menú (nav-link) */
+.sidebar-menu .nav-link {
+    color: #d1d5db; /* Gris claro para el texto inactivo */
+    padding: 12px 20px;
+    border-radius: 0;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+    /* Efecto hover/activo, similar al diseño */
+    .sidebar-menu .nav-link:hover,
+    .sidebar-menu .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.1); /* Fondo claro al pasar el ratón */
+        color: #ffffff;
+        font-weight: 500;
+        border-left: 3px solid #007bff; /* Barra azul en el lado izquierdo */
+    }
+
+    .sidebar-menu .nav-link i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+    }
+
+.top-navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 15px 30px;
+}
+
+    .top-navbar .search-box {
+        width: 250px;
+        margin-left: auto;
+    }
+
+.logout-button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+}
+
+.main-content {
+    margin-left: 260px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+    .submenu.show {
+        max-height: 500px;
+        transition: max-height 0.3s ease-in;
+    }
+
+    .submenu .nav-link {
+        padding-left: 3rem;
+        font-size: 0.9rem;
+    }
+
+.nav-link.has-submenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submenu-icon {
+    transition: transform 0.3s ease;
+}
+
+    .submenu-icon.rotate {
+        transform: rotate(180deg);
+    }

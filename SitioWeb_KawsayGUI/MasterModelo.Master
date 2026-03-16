@@ -1,0 +1,130 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterModelo.Master.cs" Inherits="SitioWeb_KawsayGUI.MasterModelo" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Kawsay Web</title>
+    <link href="CSS/Cliente.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/Transacciones.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/Dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/Sidebar.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+</head>
+<body>
+    <form runat="server">
+        <div class="page-wrapper">
+            <div class="sidebar">
+                <div class="sidebar-header text-center">
+                    <div class="profile-pic mx-auto">
+                         <i class="bi bi-person-circle text-white" style="font-size: 2rem;"></i>
+                    </div>
+                    <span class="mb-0">
+                        <asp:Label ID="lblUsuario" runat="server" />
+                    </span>
+                    <p class="profile-role">Administrador</p>
+                </div>
+                <ul class="nav flex-column sidebar-menu">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<%= ResolveUrl("~/Default.aspx") %>">
+                            <i class="bi bi-speedometer2"></i>Panel Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link has-submenu" href="#" data-toggle="submenu">
+                            <span><i class="bi bi-box-seam"></i>Consultas</span>
+                            <i class="bi bi-chevron-down submenu-icon"></i>
+                        </a>
+                        <ul class="nav flex-column submenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= ResolveUrl("~/Consultas/Cliente.aspx") %>">
+                                    <i class="bi bi-person"></i>Por Cliente
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= ResolveUrl("~/Consultas/Tecnico.aspx") %>">
+                                    <i class="bi bi-tools"></i>Por Técnico
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= ResolveUrl("~/Transacciones/Programacion.aspx") %>">
+                            <i class="bi bi-receipt"></i>Transacciones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<%= ResolveUrl("~/Reportes/Reportes.aspx") %>">
+                            <i class="bi bi-bar-chart-line"></i>Reportes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-headset"></i>Soporte
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-gear"></i>Configuración
+                        </a>
+                    </li>
+                </ul>
+                <div class="logout-button-container">
+                    <a class="btn btn-danger w-100" href='<%= ResolveUrl("~/Logout.aspx") %>'>Cerrar Sesión</a>
+                </div>
+            </div>
+            <div class="container-fluid p-4">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Manejo de submenús
+            var submenuToggles = document.querySelectorAll('[data-toggle="submenu"]');
+
+            submenuToggles.forEach(function (toggle) {
+                toggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var submenu = this.nextElementSibling;
+                    var icon = this.querySelector('.submenu-icon');
+
+                    submenu.classList.toggle('show');
+                    icon.classList.toggle('rotate');
+                });
+            });
+
+            // Marcar página activa
+            var path = window.location.pathname;
+            var currentPage = path.substring(path.lastIndexOf('/') + 1);
+            var links = document.querySelectorAll('.sidebar-menu .nav-link');
+
+            links.forEach(function (link) {
+                link.classList.remove('active');
+                var linkPage = link.getAttribute('href');
+
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+
+                    // Si es un item del submenú, expandir el submenú
+                    var parentSubmenu = link.closest('.submenu');
+                    if (parentSubmenu) {
+                        parentSubmenu.classList.add('show');
+                        var parentToggle = parentSubmenu.previousElementSibling;
+                        var parentIcon = parentToggle.querySelector('.submenu-icon');
+                        if (parentIcon) {
+                            parentIcon.classList.add('rotate');
+                        }
+                    }
+                } else if (linkPage && linkPage.includes('/') && path.includes(linkPage)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

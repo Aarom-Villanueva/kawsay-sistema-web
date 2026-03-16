@@ -1,0 +1,1376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BD_KawsayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TB_ADMINISTRADOR">
+          <Key>
+            <PropertyRef Name="Cod_Adm" />
+          </Key>
+          <Property Name="Cod_Adm" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Dni_Adm" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Nom_Adm" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ape_Pat_Adm" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ape_Mat_Adm" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tel_Adm" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Dir_Adm" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cor_Adm" Type="varchar" MaxLength="50" />
+          <Property Name="Fec_Nac_Adm" Type="date" Nullable="false" />
+          <Property Name="Cod_Ubi" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fot_Adm" Type="varbinary(max)" />
+          <Property Name="Est_Adm" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB_ALMACEN">
+          <Key>
+            <PropertyRef Name="Cod_Alm" />
+          </Key>
+          <Property Name="Cod_Alm" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Ubi" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Dir_Alm" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cap_Alm" Type="smallint" Nullable="false" />
+          <Property Name="Cod_Adm" Type="char" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_ALMACENAMIENTO">
+          <Key>
+            <PropertyRef Name="Cod_Alm" />
+            <PropertyRef Name="Cod_Pur" />
+          </Key>
+          <Property Name="Cod_Alm" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Pur" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Sto_Pur" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="Cod_Cli" />
+          </Key>
+          <Property Name="Cod_Cli" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Dni_Cli" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Nom_Cli" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ape_Pat_Cli" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ape_Mat_Cli" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tel_Cli" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Dir_Cli" Type="varchar" MaxLength="60" />
+          <Property Name="Cor_Cli" Type="varchar" MaxLength="50" />
+          <Property Name="Est_Cli" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Fec_Nac_Cli" Type="date" Nullable="false" />
+          <Property Name="Cod_Ubi" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fot_Cli" Type="varbinary(max)" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB_HERRAMIENTA">
+          <Key>
+            <PropertyRef Name="Cod_Her" />
+          </Key>
+          <Property Name="Cod_Her" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Nom_Her" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tip_Her" Type="char" MaxLength="1" />
+          <Property Name="Cod_Tec" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="Est_Her" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TB_INSTALACION">
+          <Key>
+            <PropertyRef Name="Cod_Ins" />
+          </Key>
+          <Property Name="Cod_Ins" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fec_Ins" Type="smalldatetime" Nullable="false" />
+          <Property Name="Cod_Cli" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Pur" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Cod_Tec" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fot_Ins" Type="varbinary(max)" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="Est_Ins" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TB_MANTENIMIENTO">
+          <Key>
+            <PropertyRef Name="Cod_Man" />
+          </Key>
+          <Property Name="Cod_Man" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Obs_Man" Type="varchar" MaxLength="150" />
+          <Property Name="Fec_Man" Type="smalldatetime" Nullable="false" />
+          <Property Name="Cod_Tec" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Cli" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fot_Man" Type="varbinary(max)" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="Est_Man" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TB_PROGRAMACION">
+          <Key>
+            <PropertyRef Name="Cod_Prog" />
+          </Key>
+          <Property Name="Cod_Prog" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Tec" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fec_Ini" Type="smalldatetime" Nullable="false" />
+          <Property Name="Fec_Fin" Type="smalldatetime" Nullable="false" />
+          <Property Name="Obs_Prog" Type="varchar" MaxLength="150" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Est_Prog" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_PROGRAMACION_DETALLES">
+          <Key>
+            <PropertyRef Name="Id_Det" />
+          </Key>
+          <Property Name="Id_Det" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cod_Prog" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Cli" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fec_Visita" Type="smalldatetime" Nullable="false" />
+          <Property Name="Tip_Serv" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Obs_Det" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TB_PURIFICADOR">
+          <Key>
+            <PropertyRef Name="Cod_Pur" />
+          </Key>
+          <Property Name="Cod_Pur" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Tip_Pur" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_REPORTE_VIAJE">
+          <Key>
+            <PropertyRef Name="Cod_Via" />
+          </Key>
+          <Property Name="Cod_Via" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Veh" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Cod_Tec" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fec_Via" Type="smalldatetime" Nullable="false" />
+          <Property Name="Inc_Via" Type="varchar" MaxLength="200" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="Est_Via" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TB_TECNICO">
+          <Key>
+            <PropertyRef Name="Cod_Tec" />
+          </Key>
+          <Property Name="Cod_Tec" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Dni_Tec" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Nom_Tec" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ape_Pat_Tec" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ape_Mat_Tec" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tel_Tec" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Est_Tec" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Dir_Tec" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Cor_Tec" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Esp_Tec" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Lic_Tec" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="Cod_Ubi" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Fot_Tec" Type="varbinary(max)" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Ult_Mod" Type="datetime" />
+          <Property Name="Usu_Ult_Mod" Type="varchar" MaxLength="20" />
+          <Property Name="Fec_Nac_Tec" Type="date" />
+        </EntityType>
+        <EntityType Name="TB_UBIGEO">
+          <Key>
+            <PropertyRef Name="Cod_Ubi" />
+          </Key>
+          <Property Name="Cod_Ubi" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="IdDepa" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProv" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdDist" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dep_Ubi" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Pro_Ubi" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Dis_Ubi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_USUARIO">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Nom_Usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Ape_Pat_Usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Ape_Mat_Usuario" Type="varchar" MaxLength="20" />
+          <Property Name="Niv_Usuario" Type="int" />
+          <Property Name="Est_Usuario" Type="int" />
+          <Property Name="Fec_Registro" Type="datetime" />
+          <Property Name="Usu_Registro" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB_VEHICULO">
+          <Key>
+            <PropertyRef Name="Cod_Veh" />
+          </Key>
+          <Property Name="Cod_Veh" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Pla_Veh" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Est_Veh" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Foto_Veh" Type="varbinary(max)" />
+          <Property Name="Mar_Veh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mod_Veh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num_Ser_Veh" Type="varchar" MaxLength="17" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__TB_ADMINI__Cod_U__52593CB8">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_ADMINISTRADOR" Type="Self.TB_ADMINISTRADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_ADMINISTRADOR">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_A__5535A963">
+          <End Role="TB_ADMINISTRADOR" Type="Self.TB_ADMINISTRADOR" Multiplicity="1" />
+          <End Role="TB_ALMACEN" Type="Self.TB_ALMACEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ADMINISTRADOR">
+              <PropertyRef Name="Cod_Adm" />
+            </Principal>
+            <Dependent Role="TB_ALMACEN">
+              <PropertyRef Name="Cod_Adm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_A__5629CD9C">
+          <End Role="TB_ALMACEN" Type="Self.TB_ALMACEN" Multiplicity="1" />
+          <End Role="TB_ALMACENAMIENTO" Type="Self.TB_ALMACENAMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALMACEN">
+              <PropertyRef Name="Cod_Alm" />
+            </Principal>
+            <Dependent Role="TB_ALMACENAMIENTO">
+              <PropertyRef Name="Cod_Alm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_P__5812160E">
+          <End Role="TB_PURIFICADOR" Type="Self.TB_PURIFICADOR" Multiplicity="1" />
+          <End Role="TB_ALMACENAMIENTO" Type="Self.TB_ALMACENAMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PURIFICADOR">
+              <PropertyRef Name="Cod_Pur" />
+            </Principal>
+            <Dependent Role="TB_ALMACENAMIENTO">
+              <PropertyRef Name="Cod_Pur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_U__5165187F">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_ALMACEN" Type="Self.TB_ALMACEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_ALMACEN">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENT__Cod_U__534D60F1">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HERRAM__Cod_T__4CA06362">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_HERRAMIENTA" Type="Self.TB_HERRAMIENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_HERRAMIENTA">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_INSTAL__Cod_C__571DF1D5">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_INSTALACION" Type="Self.TB_INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Cli" />
+            </Principal>
+            <Dependent Role="TB_INSTALACION">
+              <PropertyRef Name="Cod_Cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_INSTAL__Cod_P__59063A47">
+          <End Role="TB_PURIFICADOR" Type="Self.TB_PURIFICADOR" Multiplicity="1" />
+          <End Role="TB_INSTALACION" Type="Self.TB_INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PURIFICADOR">
+              <PropertyRef Name="Cod_Pur" />
+            </Principal>
+            <Dependent Role="TB_INSTALACION">
+              <PropertyRef Name="Cod_Pur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_INSTAL__Cod_T__4F7CD00D">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_INSTALACION" Type="Self.TB_INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_INSTALACION">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_MANTEN__Cod_T__4D94879B">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_MANTENIMIENTO" Type="Self.TB_MANTENIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_MANTENIMIENTO">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_TECNIC__Cod_U__5441852A">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROG_TEC">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_PROGRAMACION" Type="Self.TB_PROGRAMACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_PROGRAMACION">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROGDET_CLI">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_PROGRAMACION_DETALLES" Type="Self.TB_PROGRAMACION_DETALLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Cli" />
+            </Principal>
+            <Dependent Role="TB_PROGRAMACION_DETALLES">
+              <PropertyRef Name="Cod_Cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROGDET_PROG">
+          <End Role="TB_PROGRAMACION" Type="Self.TB_PROGRAMACION" Multiplicity="1" />
+          <End Role="TB_PROGRAMACION_DETALLES" Type="Self.TB_PROGRAMACION_DETALLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROGRAMACION">
+              <PropertyRef Name="Cod_Prog" />
+            </Principal>
+            <Dependent Role="TB_PROGRAMACION_DETALLES">
+              <PropertyRef Name="Cod_Prog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORTE_VIAJE_TECNICO">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_REPORTE_VIAJE" Type="Self.TB_REPORTE_VIAJE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_REPORTE_VIAJE">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORTE_VIAJE_VEHICULO">
+          <End Role="TB_VEHICULO" Type="Self.TB_VEHICULO" Multiplicity="1" />
+          <End Role="TB_REPORTE_VIAJE" Type="Self.TB_REPORTE_VIAJE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_VEHICULO">
+              <PropertyRef Name="Cod_Veh" />
+            </Principal>
+            <Dependent Role="TB_REPORTE_VIAJE">
+              <PropertyRef Name="Cod_Veh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_MANTENIMIENTO_TB_CLIENTE">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_MANTENIMIENTO" Type="Self.TB_MANTENIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Cli" />
+            </Principal>
+            <Dependent Role="TB_MANTENIMIENTO">
+              <PropertyRef Name="Cod_Cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_KawsayModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ADMINISTRADOR" EntityType="Self.TB_ADMINISTRADOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ALMACEN" EntityType="Self.TB_ALMACEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ALMACENAMIENTO" EntityType="Self.TB_ALMACENAMIENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CLIENTE" EntityType="Self.TB_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_HERRAMIENTA" EntityType="Self.TB_HERRAMIENTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_INSTALACION" EntityType="Self.TB_INSTALACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_MANTENIMIENTO" EntityType="Self.TB_MANTENIMIENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PROGRAMACION" EntityType="Self.TB_PROGRAMACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PROGRAMACION_DETALLES" EntityType="Self.TB_PROGRAMACION_DETALLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PURIFICADOR" EntityType="Self.TB_PURIFICADOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_REPORTE_VIAJE" EntityType="Self.TB_REPORTE_VIAJE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_TECNICO" EntityType="Self.TB_TECNICO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_UBIGEO" EntityType="Self.TB_UBIGEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_USUARIO" EntityType="Self.TB_USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_VEHICULO" EntityType="Self.TB_VEHICULO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TB_ADMINI__Cod_U__52593CB8" Association="Self.FK__TB_ADMINI__Cod_U__52593CB8">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_ADMINISTRADOR" EntitySet="TB_ADMINISTRADOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_A__5535A963" Association="Self.FK__TB_ALMACE__Cod_A__5535A963">
+            <End Role="TB_ADMINISTRADOR" EntitySet="TB_ADMINISTRADOR" />
+            <End Role="TB_ALMACEN" EntitySet="TB_ALMACEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_A__5629CD9C" Association="Self.FK__TB_ALMACE__Cod_A__5629CD9C">
+            <End Role="TB_ALMACEN" EntitySet="TB_ALMACEN" />
+            <End Role="TB_ALMACENAMIENTO" EntitySet="TB_ALMACENAMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_P__5812160E" Association="Self.FK__TB_ALMACE__Cod_P__5812160E">
+            <End Role="TB_PURIFICADOR" EntitySet="TB_PURIFICADOR" />
+            <End Role="TB_ALMACENAMIENTO" EntitySet="TB_ALMACENAMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_U__5165187F" Association="Self.FK__TB_ALMACE__Cod_U__5165187F">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_ALMACEN" EntitySet="TB_ALMACEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENT__Cod_U__534D60F1" Association="Self.FK__TB_CLIENT__Cod_U__534D60F1">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HERRAM__Cod_T__4CA06362" Association="Self.FK__TB_HERRAM__Cod_T__4CA06362">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_HERRAMIENTA" EntitySet="TB_HERRAMIENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_INSTAL__Cod_C__571DF1D5" Association="Self.FK__TB_INSTAL__Cod_C__571DF1D5">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_INSTAL__Cod_P__59063A47" Association="Self.FK__TB_INSTAL__Cod_P__59063A47">
+            <End Role="TB_PURIFICADOR" EntitySet="TB_PURIFICADOR" />
+            <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_INSTAL__Cod_T__4F7CD00D" Association="Self.FK__TB_INSTAL__Cod_T__4F7CD00D">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_MANTEN__Cod_T__4D94879B" Association="Self.FK__TB_MANTEN__Cod_T__4D94879B">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_MANTENIMIENTO" EntitySet="TB_MANTENIMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_TECNIC__Cod_U__5441852A" Association="Self.FK__TB_TECNIC__Cod_U__5441852A">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROG_TEC" Association="Self.FK_PROG_TEC">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_PROGRAMACION" EntitySet="TB_PROGRAMACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROGDET_CLI" Association="Self.FK_PROGDET_CLI">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_PROGRAMACION_DETALLES" EntitySet="TB_PROGRAMACION_DETALLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROGDET_PROG" Association="Self.FK_PROGDET_PROG">
+            <End Role="TB_PROGRAMACION" EntitySet="TB_PROGRAMACION" />
+            <End Role="TB_PROGRAMACION_DETALLES" EntitySet="TB_PROGRAMACION_DETALLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORTE_VIAJE_TECNICO" Association="Self.FK_REPORTE_VIAJE_TECNICO">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_REPORTE_VIAJE" EntitySet="TB_REPORTE_VIAJE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORTE_VIAJE_VEHICULO" Association="Self.FK_REPORTE_VIAJE_VEHICULO">
+            <End Role="TB_VEHICULO" EntitySet="TB_VEHICULO" />
+            <End Role="TB_REPORTE_VIAJE" EntitySet="TB_REPORTE_VIAJE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_MANTENIMIENTO_TB_CLIENTE" Association="Self.FK_TB_MANTENIMIENTO_TB_CLIENTE">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_MANTENIMIENTO" EntitySet="TB_MANTENIMIENTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_KawsayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB_ADMINISTRADOR">
+          <Key>
+            <PropertyRef Name="Cod_Adm" />
+          </Key>
+          <Property Name="Cod_Adm" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Dni_Adm" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_Adm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ape_Pat_Adm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ape_Mat_Adm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tel_Adm" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dir_Adm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cor_Adm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Nac_Adm" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cod_Ubi" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fot_Adm" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Est_Adm" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_UBIGEO" Relationship="Self.FK__TB_ADMINI__Cod_U__52593CB8" FromRole="TB_ADMINISTRADOR" ToRole="TB_UBIGEO" />
+          <NavigationProperty Name="TB_ALMACEN" Relationship="Self.FK__TB_ALMACE__Cod_A__5535A963" FromRole="TB_ADMINISTRADOR" ToRole="TB_ALMACEN" />
+        </EntityType>
+        <EntityType Name="TB_ALMACEN">
+          <Key>
+            <PropertyRef Name="Cod_Alm" />
+          </Key>
+          <Property Name="Cod_Alm" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Ubi" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Dir_Alm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cap_Alm" Type="Int16" Nullable="false" />
+          <Property Name="Cod_Adm" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_ADMINISTRADOR" Relationship="Self.FK__TB_ALMACE__Cod_A__5535A963" FromRole="TB_ALMACEN" ToRole="TB_ADMINISTRADOR" />
+          <NavigationProperty Name="TB_ALMACENAMIENTO" Relationship="Self.FK__TB_ALMACE__Cod_A__5629CD9C" FromRole="TB_ALMACEN" ToRole="TB_ALMACENAMIENTO" />
+          <NavigationProperty Name="TB_UBIGEO" Relationship="Self.FK__TB_ALMACE__Cod_U__5165187F" FromRole="TB_ALMACEN" ToRole="TB_UBIGEO" />
+        </EntityType>
+        <EntityType Name="TB_ALMACENAMIENTO">
+          <Key>
+            <PropertyRef Name="Cod_Alm" />
+            <PropertyRef Name="Cod_Pur" />
+          </Key>
+          <Property Name="Cod_Alm" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Pur" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Sto_Pur" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TB_ALMACEN" Relationship="Self.FK__TB_ALMACE__Cod_A__5629CD9C" FromRole="TB_ALMACENAMIENTO" ToRole="TB_ALMACEN" />
+          <NavigationProperty Name="TB_PURIFICADOR" Relationship="Self.FK__TB_ALMACE__Cod_P__5812160E" FromRole="TB_ALMACENAMIENTO" ToRole="TB_PURIFICADOR" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="Cod_Cli" />
+          </Key>
+          <Property Name="Cod_Cli" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Dni_Cli" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_Cli" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ape_Pat_Cli" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ape_Mat_Cli" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tel_Cli" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dir_Cli" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Cor_Cli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Cli" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Nac_Cli" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cod_Ubi" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fot_Cli" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_UBIGEO" Relationship="Self.FK__TB_CLIENT__Cod_U__534D60F1" FromRole="TB_CLIENTE" ToRole="TB_UBIGEO" />
+          <NavigationProperty Name="TB_INSTALACION" Relationship="Self.FK__TB_INSTAL__Cod_C__571DF1D5" FromRole="TB_CLIENTE" ToRole="TB_INSTALACION" />
+          <NavigationProperty Name="TB_PROGRAMACION_DETALLES" Relationship="Self.FK_PROGDET_CLI" FromRole="TB_CLIENTE" ToRole="TB_PROGRAMACION_DETALLES" />
+          <NavigationProperty Name="TB_MANTENIMIENTO" Relationship="Self.FK_TB_MANTENIMIENTO_TB_CLIENTE" FromRole="TB_CLIENTE" ToRole="TB_MANTENIMIENTO" />
+        </EntityType>
+        <EntityType Name="TB_HERRAMIENTA">
+          <Key>
+            <PropertyRef Name="Cod_Her" />
+          </Key>
+          <Property Name="Cod_Her" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_Her" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tip_Her" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Cod_Tec" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Her" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TB_TECNICO" Relationship="Self.FK__TB_HERRAM__Cod_T__4CA06362" FromRole="TB_HERRAMIENTA" ToRole="TB_TECNICO" />
+        </EntityType>
+        <EntityType Name="TB_INSTALACION">
+          <Key>
+            <PropertyRef Name="Cod_Ins" />
+          </Key>
+          <Property Name="Cod_Ins" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Ins" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cod_Cli" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Pur" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Tec" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fot_Ins" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Ins" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK__TB_INSTAL__Cod_C__571DF1D5" FromRole="TB_INSTALACION" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_PURIFICADOR" Relationship="Self.FK__TB_INSTAL__Cod_P__59063A47" FromRole="TB_INSTALACION" ToRole="TB_PURIFICADOR" />
+          <NavigationProperty Name="TB_TECNICO" Relationship="Self.FK__TB_INSTAL__Cod_T__4F7CD00D" FromRole="TB_INSTALACION" ToRole="TB_TECNICO" />
+        </EntityType>
+        <EntityType Name="TB_MANTENIMIENTO">
+          <Key>
+            <PropertyRef Name="Cod_Man" />
+          </Key>
+          <Property Name="Cod_Man" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Obs_Man" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Man" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cod_Tec" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Cli" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fot_Man" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Man" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK_TB_MANTENIMIENTO_TB_CLIENTE" FromRole="TB_MANTENIMIENTO" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_TECNICO" Relationship="Self.FK__TB_MANTEN__Cod_T__4D94879B" FromRole="TB_MANTENIMIENTO" ToRole="TB_TECNICO" />
+        </EntityType>
+        <EntityType Name="TB_PROGRAMACION">
+          <Key>
+            <PropertyRef Name="Cod_Prog" />
+          </Key>
+          <Property Name="Cod_Prog" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Tec" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Ini" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fec_Fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Obs_Prog" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Prog" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_TECNICO" Relationship="Self.FK_PROG_TEC" FromRole="TB_PROGRAMACION" ToRole="TB_TECNICO" />
+          <NavigationProperty Name="TB_PROGRAMACION_DETALLES" Relationship="Self.FK_PROGDET_PROG" FromRole="TB_PROGRAMACION" ToRole="TB_PROGRAMACION_DETALLES" />
+        </EntityType>
+        <EntityType Name="TB_PROGRAMACION_DETALLES">
+          <Key>
+            <PropertyRef Name="Id_Det" />
+          </Key>
+          <Property Name="Id_Det" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_Prog" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Cli" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Visita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tip_Serv" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Obs_Det" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK_PROGDET_CLI" FromRole="TB_PROGRAMACION_DETALLES" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_PROGRAMACION" Relationship="Self.FK_PROGDET_PROG" FromRole="TB_PROGRAMACION_DETALLES" ToRole="TB_PROGRAMACION" />
+        </EntityType>
+        <EntityType Name="TB_PURIFICADOR">
+          <Key>
+            <PropertyRef Name="Cod_Pur" />
+          </Key>
+          <Property Name="Cod_Pur" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Tip_Pur" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_ALMACENAMIENTO" Relationship="Self.FK__TB_ALMACE__Cod_P__5812160E" FromRole="TB_PURIFICADOR" ToRole="TB_ALMACENAMIENTO" />
+          <NavigationProperty Name="TB_INSTALACION" Relationship="Self.FK__TB_INSTAL__Cod_P__59063A47" FromRole="TB_PURIFICADOR" ToRole="TB_INSTALACION" />
+        </EntityType>
+        <EntityType Name="TB_REPORTE_VIAJE">
+          <Key>
+            <PropertyRef Name="Cod_Via" />
+          </Key>
+          <Property Name="Cod_Via" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Veh" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Tec" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fec_Via" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Inc_Via" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Via" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TB_TECNICO" Relationship="Self.FK_REPORTE_VIAJE_TECNICO" FromRole="TB_REPORTE_VIAJE" ToRole="TB_TECNICO" />
+          <NavigationProperty Name="TB_VEHICULO" Relationship="Self.FK_REPORTE_VIAJE_VEHICULO" FromRole="TB_REPORTE_VIAJE" ToRole="TB_VEHICULO" />
+        </EntityType>
+        <EntityType Name="TB_TECNICO">
+          <Key>
+            <PropertyRef Name="Cod_Tec" />
+          </Key>
+          <Property Name="Cod_Tec" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Dni_Tec" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom_Tec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ape_Pat_Tec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ape_Mat_Tec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tel_Tec" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Est_Tec" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Dir_Tec" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cor_Tec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Esp_Tec" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Lic_Tec" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Ubi" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fot_Tec" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Ult_Mod" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Ult_Mod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Nac_Tec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TB_HERRAMIENTA" Relationship="Self.FK__TB_HERRAM__Cod_T__4CA06362" FromRole="TB_TECNICO" ToRole="TB_HERRAMIENTA" />
+          <NavigationProperty Name="TB_INSTALACION" Relationship="Self.FK__TB_INSTAL__Cod_T__4F7CD00D" FromRole="TB_TECNICO" ToRole="TB_INSTALACION" />
+          <NavigationProperty Name="TB_MANTENIMIENTO" Relationship="Self.FK__TB_MANTEN__Cod_T__4D94879B" FromRole="TB_TECNICO" ToRole="TB_MANTENIMIENTO" />
+          <NavigationProperty Name="TB_PROGRAMACION" Relationship="Self.FK_PROG_TEC" FromRole="TB_TECNICO" ToRole="TB_PROGRAMACION" />
+          <NavigationProperty Name="TB_REPORTE_VIAJE" Relationship="Self.FK_REPORTE_VIAJE_TECNICO" FromRole="TB_TECNICO" ToRole="TB_REPORTE_VIAJE" />
+          <NavigationProperty Name="TB_UBIGEO" Relationship="Self.FK__TB_TECNIC__Cod_U__5441852A" FromRole="TB_TECNICO" ToRole="TB_UBIGEO" />
+        </EntityType>
+        <EntityType Name="TB_UBIGEO">
+          <Key>
+            <PropertyRef Name="Cod_Ubi" />
+          </Key>
+          <Property Name="Cod_Ubi" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IdDepa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdProv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdDist" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dep_Ubi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pro_Ubi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dis_Ubi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TB_ADMINISTRADOR" Relationship="Self.FK__TB_ADMINI__Cod_U__52593CB8" FromRole="TB_UBIGEO" ToRole="TB_ADMINISTRADOR" />
+          <NavigationProperty Name="TB_ALMACEN" Relationship="Self.FK__TB_ALMACE__Cod_U__5165187F" FromRole="TB_UBIGEO" ToRole="TB_ALMACEN" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK__TB_CLIENT__Cod_U__534D60F1" FromRole="TB_UBIGEO" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_TECNICO" Relationship="Self.FK__TB_TECNIC__Cod_U__5441852A" FromRole="TB_UBIGEO" ToRole="TB_TECNICO" />
+        </EntityType>
+        <EntityType Name="TB_USUARIO">
+          <Key>
+            <PropertyRef Name="Login_Usuario" />
+          </Key>
+          <Property Name="Login_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nom_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Ape_Pat_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Ape_Mat_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Niv_Usuario" Type="Int32" />
+          <Property Name="Est_Usuario" Type="Int32" />
+          <Property Name="Fec_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Usu_Registro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_VEHICULO">
+          <Key>
+            <PropertyRef Name="Cod_Veh" />
+          </Key>
+          <Property Name="Cod_Veh" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Pla_Veh" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Est_Veh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Foto_Veh" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="TB_REPORTE_VIAJE" Relationship="Self.FK_REPORTE_VIAJE_VEHICULO" FromRole="TB_VEHICULO" ToRole="TB_REPORTE_VIAJE" />
+          <Property Name="Mar_Veh" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mod_Veh" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Num_Ser_Veh" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__TB_ADMINI__Cod_U__52593CB8">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_ADMINISTRADOR" Type="Self.TB_ADMINISTRADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_ADMINISTRADOR">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_A__5535A963">
+          <End Role="TB_ADMINISTRADOR" Type="Self.TB_ADMINISTRADOR" Multiplicity="1" />
+          <End Role="TB_ALMACEN" Type="Self.TB_ALMACEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ADMINISTRADOR">
+              <PropertyRef Name="Cod_Adm" />
+            </Principal>
+            <Dependent Role="TB_ALMACEN">
+              <PropertyRef Name="Cod_Adm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_A__5629CD9C">
+          <End Role="TB_ALMACEN" Type="Self.TB_ALMACEN" Multiplicity="1" />
+          <End Role="TB_ALMACENAMIENTO" Type="Self.TB_ALMACENAMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALMACEN">
+              <PropertyRef Name="Cod_Alm" />
+            </Principal>
+            <Dependent Role="TB_ALMACENAMIENTO">
+              <PropertyRef Name="Cod_Alm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_U__5165187F">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_ALMACEN" Type="Self.TB_ALMACEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_ALMACEN">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_ALMACE__Cod_P__5812160E">
+          <End Role="TB_PURIFICADOR" Type="Self.TB_PURIFICADOR" Multiplicity="1" />
+          <End Role="TB_ALMACENAMIENTO" Type="Self.TB_ALMACENAMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PURIFICADOR">
+              <PropertyRef Name="Cod_Pur" />
+            </Principal>
+            <Dependent Role="TB_ALMACENAMIENTO">
+              <PropertyRef Name="Cod_Pur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENT__Cod_U__534D60F1">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_INSTAL__Cod_C__571DF1D5">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_INSTALACION" Type="Self.TB_INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Cli" />
+            </Principal>
+            <Dependent Role="TB_INSTALACION">
+              <PropertyRef Name="Cod_Cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROGDET_CLI">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_PROGRAMACION_DETALLES" Type="Self.TB_PROGRAMACION_DETALLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Cli" />
+            </Principal>
+            <Dependent Role="TB_PROGRAMACION_DETALLES">
+              <PropertyRef Name="Cod_Cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_MANTENIMIENTO_TB_CLIENTE">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_MANTENIMIENTO" Type="Self.TB_MANTENIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Cod_Cli" />
+            </Principal>
+            <Dependent Role="TB_MANTENIMIENTO">
+              <PropertyRef Name="Cod_Cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HERRAM__Cod_T__4CA06362">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_HERRAMIENTA" Type="Self.TB_HERRAMIENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_HERRAMIENTA">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_INSTAL__Cod_P__59063A47">
+          <End Role="TB_PURIFICADOR" Type="Self.TB_PURIFICADOR" Multiplicity="1" />
+          <End Role="TB_INSTALACION" Type="Self.TB_INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PURIFICADOR">
+              <PropertyRef Name="Cod_Pur" />
+            </Principal>
+            <Dependent Role="TB_INSTALACION">
+              <PropertyRef Name="Cod_Pur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_INSTAL__Cod_T__4F7CD00D">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_INSTALACION" Type="Self.TB_INSTALACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_INSTALACION">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_MANTEN__Cod_T__4D94879B">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_MANTENIMIENTO" Type="Self.TB_MANTENIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_MANTENIMIENTO">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROG_TEC">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_PROGRAMACION" Type="Self.TB_PROGRAMACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_PROGRAMACION">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROGDET_PROG">
+          <End Role="TB_PROGRAMACION" Type="Self.TB_PROGRAMACION" Multiplicity="1" />
+          <End Role="TB_PROGRAMACION_DETALLES" Type="Self.TB_PROGRAMACION_DETALLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PROGRAMACION">
+              <PropertyRef Name="Cod_Prog" />
+            </Principal>
+            <Dependent Role="TB_PROGRAMACION_DETALLES">
+              <PropertyRef Name="Cod_Prog" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORTE_VIAJE_TECNICO">
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="1" />
+          <End Role="TB_REPORTE_VIAJE" Type="Self.TB_REPORTE_VIAJE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Tec" />
+            </Principal>
+            <Dependent Role="TB_REPORTE_VIAJE">
+              <PropertyRef Name="Cod_Tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPORTE_VIAJE_VEHICULO">
+          <End Role="TB_VEHICULO" Type="Self.TB_VEHICULO" Multiplicity="1" />
+          <End Role="TB_REPORTE_VIAJE" Type="Self.TB_REPORTE_VIAJE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_VEHICULO">
+              <PropertyRef Name="Cod_Veh" />
+            </Principal>
+            <Dependent Role="TB_REPORTE_VIAJE">
+              <PropertyRef Name="Cod_Veh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_TECNIC__Cod_U__5441852A">
+          <End Role="TB_UBIGEO" Type="Self.TB_UBIGEO" Multiplicity="1" />
+          <End Role="TB_TECNICO" Type="Self.TB_TECNICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_UBIGEO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Principal>
+            <Dependent Role="TB_TECNICO">
+              <PropertyRef Name="Cod_Ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_KawsayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TB_ADMINISTRADOR" EntityType="Self.TB_ADMINISTRADOR" />
+          <EntitySet Name="TB_ALMACEN" EntityType="Self.TB_ALMACEN" />
+          <EntitySet Name="TB_ALMACENAMIENTO" EntityType="Self.TB_ALMACENAMIENTO" />
+          <EntitySet Name="TB_CLIENTE" EntityType="Self.TB_CLIENTE" />
+          <EntitySet Name="TB_HERRAMIENTA" EntityType="Self.TB_HERRAMIENTA" />
+          <EntitySet Name="TB_INSTALACION" EntityType="Self.TB_INSTALACION" />
+          <EntitySet Name="TB_MANTENIMIENTO" EntityType="Self.TB_MANTENIMIENTO" />
+          <EntitySet Name="TB_PROGRAMACION" EntityType="Self.TB_PROGRAMACION" />
+          <EntitySet Name="TB_PROGRAMACION_DETALLES" EntityType="Self.TB_PROGRAMACION_DETALLES" />
+          <EntitySet Name="TB_PURIFICADOR" EntityType="Self.TB_PURIFICADOR" />
+          <EntitySet Name="TB_REPORTE_VIAJE" EntityType="Self.TB_REPORTE_VIAJE" />
+          <EntitySet Name="TB_TECNICO" EntityType="Self.TB_TECNICO" />
+          <EntitySet Name="TB_UBIGEO" EntityType="Self.TB_UBIGEO" />
+          <EntitySet Name="TB_USUARIO" EntityType="Self.TB_USUARIO" />
+          <EntitySet Name="TB_VEHICULO" EntityType="Self.TB_VEHICULO" />
+          <AssociationSet Name="FK__TB_ADMINI__Cod_U__52593CB8" Association="Self.FK__TB_ADMINI__Cod_U__52593CB8">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_ADMINISTRADOR" EntitySet="TB_ADMINISTRADOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_A__5535A963" Association="Self.FK__TB_ALMACE__Cod_A__5535A963">
+            <End Role="TB_ADMINISTRADOR" EntitySet="TB_ADMINISTRADOR" />
+            <End Role="TB_ALMACEN" EntitySet="TB_ALMACEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_A__5629CD9C" Association="Self.FK__TB_ALMACE__Cod_A__5629CD9C">
+            <End Role="TB_ALMACEN" EntitySet="TB_ALMACEN" />
+            <End Role="TB_ALMACENAMIENTO" EntitySet="TB_ALMACENAMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_U__5165187F" Association="Self.FK__TB_ALMACE__Cod_U__5165187F">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_ALMACEN" EntitySet="TB_ALMACEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_ALMACE__Cod_P__5812160E" Association="Self.FK__TB_ALMACE__Cod_P__5812160E">
+            <End Role="TB_PURIFICADOR" EntitySet="TB_PURIFICADOR" />
+            <End Role="TB_ALMACENAMIENTO" EntitySet="TB_ALMACENAMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENT__Cod_U__534D60F1" Association="Self.FK__TB_CLIENT__Cod_U__534D60F1">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_INSTAL__Cod_C__571DF1D5" Association="Self.FK__TB_INSTAL__Cod_C__571DF1D5">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROGDET_CLI" Association="Self.FK_PROGDET_CLI">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_PROGRAMACION_DETALLES" EntitySet="TB_PROGRAMACION_DETALLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_MANTENIMIENTO_TB_CLIENTE" Association="Self.FK_TB_MANTENIMIENTO_TB_CLIENTE">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_MANTENIMIENTO" EntitySet="TB_MANTENIMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HERRAM__Cod_T__4CA06362" Association="Self.FK__TB_HERRAM__Cod_T__4CA06362">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_HERRAMIENTA" EntitySet="TB_HERRAMIENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_INSTAL__Cod_P__59063A47" Association="Self.FK__TB_INSTAL__Cod_P__59063A47">
+            <End Role="TB_PURIFICADOR" EntitySet="TB_PURIFICADOR" />
+            <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_INSTAL__Cod_T__4F7CD00D" Association="Self.FK__TB_INSTAL__Cod_T__4F7CD00D">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_MANTEN__Cod_T__4D94879B" Association="Self.FK__TB_MANTEN__Cod_T__4D94879B">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_MANTENIMIENTO" EntitySet="TB_MANTENIMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROG_TEC" Association="Self.FK_PROG_TEC">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_PROGRAMACION" EntitySet="TB_PROGRAMACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROGDET_PROG" Association="Self.FK_PROGDET_PROG">
+            <End Role="TB_PROGRAMACION" EntitySet="TB_PROGRAMACION" />
+            <End Role="TB_PROGRAMACION_DETALLES" EntitySet="TB_PROGRAMACION_DETALLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORTE_VIAJE_TECNICO" Association="Self.FK_REPORTE_VIAJE_TECNICO">
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+            <End Role="TB_REPORTE_VIAJE" EntitySet="TB_REPORTE_VIAJE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPORTE_VIAJE_VEHICULO" Association="Self.FK_REPORTE_VIAJE_VEHICULO">
+            <End Role="TB_VEHICULO" EntitySet="TB_VEHICULO" />
+            <End Role="TB_REPORTE_VIAJE" EntitySet="TB_REPORTE_VIAJE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_TECNIC__Cod_U__5441852A" Association="Self.FK__TB_TECNIC__Cod_U__5441852A">
+            <End Role="TB_UBIGEO" EntitySet="TB_UBIGEO" />
+            <End Role="TB_TECNICO" EntitySet="TB_TECNICO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_KawsayModelStoreContainer" CdmEntityContainer="BD_KawsayEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BD_KawsayModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ADMINISTRADOR">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_ADMINISTRADOR">
+              <MappingFragment StoreEntitySet="TB_ADMINISTRADOR">
+                <ScalarProperty Name="Cod_Adm" ColumnName="Cod_Adm" />
+                <ScalarProperty Name="Dni_Adm" ColumnName="Dni_Adm" />
+                <ScalarProperty Name="Nom_Adm" ColumnName="Nom_Adm" />
+                <ScalarProperty Name="Ape_Pat_Adm" ColumnName="Ape_Pat_Adm" />
+                <ScalarProperty Name="Ape_Mat_Adm" ColumnName="Ape_Mat_Adm" />
+                <ScalarProperty Name="Tel_Adm" ColumnName="Tel_Adm" />
+                <ScalarProperty Name="Dir_Adm" ColumnName="Dir_Adm" />
+                <ScalarProperty Name="Cor_Adm" ColumnName="Cor_Adm" />
+                <ScalarProperty Name="Fec_Nac_Adm" ColumnName="Fec_Nac_Adm" />
+                <ScalarProperty Name="Cod_Ubi" ColumnName="Cod_Ubi" />
+                <ScalarProperty Name="Fot_Adm" ColumnName="Fot_Adm" />
+                <ScalarProperty Name="Est_Adm" ColumnName="Est_Adm" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ALMACEN">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_ALMACEN">
+              <MappingFragment StoreEntitySet="TB_ALMACEN">
+                <ScalarProperty Name="Cod_Alm" ColumnName="Cod_Alm" />
+                <ScalarProperty Name="Cod_Ubi" ColumnName="Cod_Ubi" />
+                <ScalarProperty Name="Dir_Alm" ColumnName="Dir_Alm" />
+                <ScalarProperty Name="Cap_Alm" ColumnName="Cap_Alm" />
+                <ScalarProperty Name="Cod_Adm" ColumnName="Cod_Adm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ALMACENAMIENTO">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_ALMACENAMIENTO">
+              <MappingFragment StoreEntitySet="TB_ALMACENAMIENTO">
+                <ScalarProperty Name="Cod_Alm" ColumnName="Cod_Alm" />
+                <ScalarProperty Name="Cod_Pur" ColumnName="Cod_Pur" />
+                <ScalarProperty Name="Sto_Pur" ColumnName="Sto_Pur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CLIENTE">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_CLIENTE">
+              <MappingFragment StoreEntitySet="TB_CLIENTE">
+                <ScalarProperty Name="Cod_Cli" ColumnName="Cod_Cli" />
+                <ScalarProperty Name="Dni_Cli" ColumnName="Dni_Cli" />
+                <ScalarProperty Name="Nom_Cli" ColumnName="Nom_Cli" />
+                <ScalarProperty Name="Ape_Pat_Cli" ColumnName="Ape_Pat_Cli" />
+                <ScalarProperty Name="Ape_Mat_Cli" ColumnName="Ape_Mat_Cli" />
+                <ScalarProperty Name="Tel_Cli" ColumnName="Tel_Cli" />
+                <ScalarProperty Name="Dir_Cli" ColumnName="Dir_Cli" />
+                <ScalarProperty Name="Cor_Cli" ColumnName="Cor_Cli" />
+                <ScalarProperty Name="Est_Cli" ColumnName="Est_Cli" />
+                <ScalarProperty Name="Fec_Nac_Cli" ColumnName="Fec_Nac_Cli" />
+                <ScalarProperty Name="Cod_Ubi" ColumnName="Cod_Ubi" />
+                <ScalarProperty Name="Fot_Cli" ColumnName="Fot_Cli" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_HERRAMIENTA">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_HERRAMIENTA">
+              <MappingFragment StoreEntitySet="TB_HERRAMIENTA">
+                <ScalarProperty Name="Cod_Her" ColumnName="Cod_Her" />
+                <ScalarProperty Name="Nom_Her" ColumnName="Nom_Her" />
+                <ScalarProperty Name="Tip_Her" ColumnName="Tip_Her" />
+                <ScalarProperty Name="Cod_Tec" ColumnName="Cod_Tec" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Est_Her" ColumnName="Est_Her" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_INSTALACION">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_INSTALACION">
+              <MappingFragment StoreEntitySet="TB_INSTALACION">
+                <ScalarProperty Name="Cod_Ins" ColumnName="Cod_Ins" />
+                <ScalarProperty Name="Fec_Ins" ColumnName="Fec_Ins" />
+                <ScalarProperty Name="Cod_Cli" ColumnName="Cod_Cli" />
+                <ScalarProperty Name="Cod_Pur" ColumnName="Cod_Pur" />
+                <ScalarProperty Name="Cod_Tec" ColumnName="Cod_Tec" />
+                <ScalarProperty Name="Fot_Ins" ColumnName="Fot_Ins" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Est_Ins" ColumnName="Est_Ins" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_MANTENIMIENTO">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_MANTENIMIENTO">
+              <MappingFragment StoreEntitySet="TB_MANTENIMIENTO">
+                <ScalarProperty Name="Cod_Man" ColumnName="Cod_Man" />
+                <ScalarProperty Name="Obs_Man" ColumnName="Obs_Man" />
+                <ScalarProperty Name="Fec_Man" ColumnName="Fec_Man" />
+                <ScalarProperty Name="Cod_Tec" ColumnName="Cod_Tec" />
+                <ScalarProperty Name="Cod_Cli" ColumnName="Cod_Cli" />
+                <ScalarProperty Name="Fot_Man" ColumnName="Fot_Man" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Est_Man" ColumnName="Est_Man" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PROGRAMACION">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_PROGRAMACION">
+              <MappingFragment StoreEntitySet="TB_PROGRAMACION">
+                <ScalarProperty Name="Cod_Prog" ColumnName="Cod_Prog" />
+                <ScalarProperty Name="Cod_Tec" ColumnName="Cod_Tec" />
+                <ScalarProperty Name="Fec_Ini" ColumnName="Fec_Ini" />
+                <ScalarProperty Name="Fec_Fin" ColumnName="Fec_Fin" />
+                <ScalarProperty Name="Obs_Prog" ColumnName="Obs_Prog" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Est_Prog" ColumnName="Est_Prog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PROGRAMACION_DETALLES">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_PROGRAMACION_DETALLES">
+              <MappingFragment StoreEntitySet="TB_PROGRAMACION_DETALLES">
+                <ScalarProperty Name="Id_Det" ColumnName="Id_Det" />
+                <ScalarProperty Name="Cod_Prog" ColumnName="Cod_Prog" />
+                <ScalarProperty Name="Cod_Cli" ColumnName="Cod_Cli" />
+                <ScalarProperty Name="Fec_Visita" ColumnName="Fec_Visita" />
+                <ScalarProperty Name="Tip_Serv" ColumnName="Tip_Serv" />
+                <ScalarProperty Name="Obs_Det" ColumnName="Obs_Det" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PURIFICADOR">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_PURIFICADOR">
+              <MappingFragment StoreEntitySet="TB_PURIFICADOR">
+                <ScalarProperty Name="Cod_Pur" ColumnName="Cod_Pur" />
+                <ScalarProperty Name="Tip_Pur" ColumnName="Tip_Pur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_REPORTE_VIAJE">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_REPORTE_VIAJE">
+              <MappingFragment StoreEntitySet="TB_REPORTE_VIAJE">
+                <ScalarProperty Name="Cod_Via" ColumnName="Cod_Via" />
+                <ScalarProperty Name="Cod_Veh" ColumnName="Cod_Veh" />
+                <ScalarProperty Name="Cod_Tec" ColumnName="Cod_Tec" />
+                <ScalarProperty Name="Fec_Via" ColumnName="Fec_Via" />
+                <ScalarProperty Name="Inc_Via" ColumnName="Inc_Via" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Est_Via" ColumnName="Est_Via" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TECNICO">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_TECNICO">
+              <MappingFragment StoreEntitySet="TB_TECNICO">
+                <ScalarProperty Name="Cod_Tec" ColumnName="Cod_Tec" />
+                <ScalarProperty Name="Dni_Tec" ColumnName="Dni_Tec" />
+                <ScalarProperty Name="Nom_Tec" ColumnName="Nom_Tec" />
+                <ScalarProperty Name="Ape_Pat_Tec" ColumnName="Ape_Pat_Tec" />
+                <ScalarProperty Name="Ape_Mat_Tec" ColumnName="Ape_Mat_Tec" />
+                <ScalarProperty Name="Tel_Tec" ColumnName="Tel_Tec" />
+                <ScalarProperty Name="Est_Tec" ColumnName="Est_Tec" />
+                <ScalarProperty Name="Dir_Tec" ColumnName="Dir_Tec" />
+                <ScalarProperty Name="Cor_Tec" ColumnName="Cor_Tec" />
+                <ScalarProperty Name="Esp_Tec" ColumnName="Esp_Tec" />
+                <ScalarProperty Name="Lic_Tec" ColumnName="Lic_Tec" />
+                <ScalarProperty Name="Cod_Ubi" ColumnName="Cod_Ubi" />
+                <ScalarProperty Name="Fot_Tec" ColumnName="Fot_Tec" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+                <ScalarProperty Name="Fec_Ult_Mod" ColumnName="Fec_Ult_Mod" />
+                <ScalarProperty Name="Usu_Ult_Mod" ColumnName="Usu_Ult_Mod" />
+                <ScalarProperty Name="Fec_Nac_Tec" ColumnName="Fec_Nac_Tec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_UBIGEO">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_UBIGEO">
+              <MappingFragment StoreEntitySet="TB_UBIGEO">
+                <ScalarProperty Name="Cod_Ubi" ColumnName="Cod_Ubi" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Dep_Ubi" ColumnName="Dep_Ubi" />
+                <ScalarProperty Name="Pro_Ubi" ColumnName="Pro_Ubi" />
+                <ScalarProperty Name="Dis_Ubi" ColumnName="Dis_Ubi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_USUARIO">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_USUARIO">
+              <MappingFragment StoreEntitySet="TB_USUARIO">
+                <ScalarProperty Name="Login_Usuario" ColumnName="Login_Usuario" />
+                <ScalarProperty Name="Pass_Usuario" ColumnName="Pass_Usuario" />
+                <ScalarProperty Name="Nom_Usuario" ColumnName="Nom_Usuario" />
+                <ScalarProperty Name="Ape_Pat_Usuario" ColumnName="Ape_Pat_Usuario" />
+                <ScalarProperty Name="Ape_Mat_Usuario" ColumnName="Ape_Mat_Usuario" />
+                <ScalarProperty Name="Niv_Usuario" ColumnName="Niv_Usuario" />
+                <ScalarProperty Name="Est_Usuario" ColumnName="Est_Usuario" />
+                <ScalarProperty Name="Fec_Registro" ColumnName="Fec_Registro" />
+                <ScalarProperty Name="Usu_Registro" ColumnName="Usu_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_VEHICULO">
+            <EntityTypeMapping TypeName="BD_KawsayModel.TB_VEHICULO">
+              <MappingFragment StoreEntitySet="TB_VEHICULO">
+                <ScalarProperty Name="Num_Ser_Veh" ColumnName="Num_Ser_Veh" />
+                <ScalarProperty Name="Mod_Veh" ColumnName="Mod_Veh" />
+                <ScalarProperty Name="Mar_Veh" ColumnName="Mar_Veh" />
+                <ScalarProperty Name="Cod_Veh" ColumnName="Cod_Veh" />
+                <ScalarProperty Name="Pla_Veh" ColumnName="Pla_Veh" />
+                <ScalarProperty Name="Est_Veh" ColumnName="Est_Veh" />
+                <ScalarProperty Name="Foto_Veh" ColumnName="Foto_Veh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

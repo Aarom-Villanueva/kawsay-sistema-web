@@ -1,0 +1,41 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# Packages
+packages/
+
+# Logs
+*.log
+
+# Database files
+*.mdf
+*.ldf
+*.ndf
+*.bak
+
+# IIS / local config
+*.dbmdl
+*.jfm
+
+# Temporary files
+*.tmp
+*.cache
+*.pdb
+
+# Publish
+*.publishsettings
+
+# Others
+TestResults/
+.DS_Store
+Thumbs.db
