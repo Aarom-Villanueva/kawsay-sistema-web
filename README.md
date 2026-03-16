@@ -152,9 +152,10 @@ Proyecto académico / portafolio.
 
 **Aarom Villanueva**
 
-Si deseas, este repositorio puede complementarse con documentación adicional como:
-- diagrama de arquitectura
-- modelo entidad-relación
-- casos de uso
-- manual técnico
-- manual de usuario
+## Nota importante
+
+Este repositorio presenta la estructura, lógica y desarrollo del sistema a nivel de código fuente y organización del proyecto.
+
+La base de datos real y ciertos componentes del entorno original no se publican por motivos de seguridad y privacidad.
+
+Para una revisión más detallada del funcionamiento integral del proyecto, demostración técnica o explicación de la base de datos, puedes contactarme por mensaje directo.
