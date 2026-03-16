@@ -104,8 +104,6 @@ Kawsay_Proyecto/
 
 El proyecto utiliza una base de datos SQL Server llamada `BD_Kawsay`.
 
-> Importante: por buenas prácticas, **no se recomienda subir directamente** los archivos `BD_Kawsay.mdf` y `BD_Kawsay_log.ldf` al repositorio público. Lo ideal es publicar un **script SQL** con la estructura de tablas, procedimientos y datos de prueba, o en su defecto un respaldo controlado para entorno académico.
-
 ## Configuración local
 
 1. Clonar el repositorio.
