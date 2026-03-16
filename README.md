@@ -128,10 +128,10 @@ Antes de ejecutar, reemplaza la conexión local del proyecto por la de tu equipo
 ## Capturas del sistema
 
 ### Login
-![Login del sistema](docs/capturas/01-login.jpg)
+![Login del sistema](docs/01-login.jpg)
 
 ### Dashboard
-![Dashboard del sistema](docs/capturas/02-dashboard.jpg)
+![Dashboard del sistema](docs/02-dashboard.jpg)
 
 ## Aprendizajes demostrados
 
