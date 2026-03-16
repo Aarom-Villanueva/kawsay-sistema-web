@@ -125,15 +125,13 @@ Antes de ejecutar, reemplaza la conexión local del proyecto por la de tu equipo
      providerName="System.Data.EntityClient" />
 ```
 
-## Capturas sugeridas para el README
+## Capturas del sistema
 
-Sería ideal agregar imágenes de:
-- Login
-- Dashboard principal
-- Consulta por cliente
-- Consulta por técnico
-- Registro de programación
-- Reporte de viajes
+### Login
+![Login del sistema](docs/capturas/login.png)
+
+### Dashboard
+![Dashboard del sistema](docs/capturas/dashboard.png)
 
 ## Aprendizajes demostrados
 
